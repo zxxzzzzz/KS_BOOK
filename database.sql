@@ -1,6 +1,4 @@
 
-
-DROP DATABASE IF  EXISTS `KS`;
 CREATE DATABASE  `KS`
 CHARACTER SET 'utf8'
 COLLATE 'utf8_general_ci';
@@ -14,7 +12,7 @@ CREATE TABLE `TBUser`(
 `Role` VARCHAR(255) NOT NULL COMMENT '扮演的角色', -- --诸如：教师/学生/管理员
 `Online` VARCHAR(10) NOT NULL COMMENT '是否在线（yes/no）', -- --online表示在线，限制重复登录。当online=yes ,表示已有人登录该账号，不能再登。
 `BlackList` VARCHAR(10) NOT NULL COMMENT '是否在黑名单（yes/no）',-- --在黑名单会有功能限制
-`Score` INT(11) NOT NULL COMMENT '个人评分' -- --用来做是否加入黑名单依据  score<0进黑名单（-100-100）
+`Score` INT(11) NOT NULL COMMENT '个人评分', -- --用来做是否加入黑名单依据  score<0进黑名单（-100-100）
 PRIMARY KEY (`ID`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- ----------------------------------------------------------------------------------------------------用户
@@ -54,7 +52,7 @@ PRIMARY KEY (`ID`)
 
 DROP TABLE IF EXISTS `TBDesk`; -- --座位
 CREATE TABLE `TBDesk`(
-`ID` INT(11) NOT NULL AUTO_INCREMEN,
+`ID` INT(11) NOT NULL AUTO_INCREMENT,
 `RoomID` INT(11) NOT NULL COMMENT'所属教室id',
 `State` varchar(11) NOT NULL COMMENT'桌子状态',-- --（using/leaving/emptying/ordering）
 `UserID` INT(11) NOT NULL COMMENT '使用者id', 
@@ -63,20 +61,20 @@ PRIMARY KEY (`ID`)
 
 DROP TABLE IF EXISTS `TBAgainstHistory`; -- --违规记录
 CREATE TABLE `TBAgainstHistory`(
-`ID` INT(11) NOT NULL AUTO_INCREMEN,
+`ID` INT(11) NOT NULL AUTO_INCREMENT,
 `UserID` INT(11) NOT NULL COMMENT '违反者id',
-`Time` DATETIME(255) NOT NULL COMMENT '违反时间',
+`Time` DATETIME NOT NULL COMMENT '违反时间',
 `Detail` varchar(255)  NOT NULL COMMENT '违反细节', -- --诸如："在学习时晒臭脚" "暂离后未在时间内回归"
 `DeskID` INT(11) NOT NULL COMMENT '违反者使用桌子id',
-`Score` INT(11) NOT NULL COMMENT '扣分'
+`Score` INT(11) NOT NULL COMMENT '扣分',
 PRIMARY KEY (`ID`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `TBOrderHistory`; -- --预约记录
 CREATE TABLE `TBOrderHistory`(
-`ID` INT(11) NOT NULL AUTO_INCREMEN,
+`ID` INT(11) NOT NULL AUTO_INCREMENT,
 `UserID` INT(11) NOT NULL COMMENT '预约者id',
-`Time` DATETIME(255) NOT NULL COMMENT '预约时间',
+`Time` DATETIME NOT NULL COMMENT '预约时间',
 `DeskID` INT(11) NOT NULL COMMENT '预约桌子id',
 PRIMARY KEY (`ID`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
