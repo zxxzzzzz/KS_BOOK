@@ -28,7 +28,7 @@ def sqlFormat(sqlStr,valuesList):
         count += 1
     return sqlStr
 
-#分数低于0的人加入黑名单
+##分数低于0的人加入黑名单
 def watchBlacklist():
     sql = 'update TBUser set BlackList = "yes" where Score < 0'
     return doInsert(sql)
