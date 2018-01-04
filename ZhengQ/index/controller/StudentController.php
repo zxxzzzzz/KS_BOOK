@@ -132,7 +132,7 @@ class StudentController extends IndexController{
 		$result2 = Db::table('tborder')
 							->where('UserID',	$id)
 							->update(['Deadline'	=>$time1]);
-		//插入数据到历史表
+		//插入数据到历史 表
 		$result3	=	Db::table('TBOrderHistory')
 							->where('UserID',	$id)
 							->update(['Deadline'	=>$time1]);
