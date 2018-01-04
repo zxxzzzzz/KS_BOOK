@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<title>学生界面</title>
+	<link rel="stylesheet" style="text/css" href = "/seat/public/css/bootstrap.min.css"> 
+ </head>
+<body class="container">
+	<div class="row">
+		<hr>
+		<div class="row">
+				<div class="col-md-8">
+					<form class="form-inline" >
+						<label class="sr-only" for="id">座位ID</label>
+						<input  type="text" name="id" class="form-controller" placeholder="输入座位ID..." value={:input('get.id')}>
+						<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+					</form>
+				</div>
+				<div class="col-md-4 text-right">
+				<a class="btn btn-sm btn btn-info" href="{:url('student/student')}">
+						<i class="glyphicon glyphicon-pencil"></i>查看个人信息</a>
+						&nbsp;&nbsp;
+						<a class="btn btn-info btn-primary" href="{:url('/building/building')}">
+						<i class="glyphicon  "></i>查看楼层情况</a>
+				</div>
+		</div>
+		<hr>
+         <div class="col-md-12">
+            <form>
+				<div class="row text-center">
+					<label>座位情况</label>
+				</div>
+				<table class="table table-hover table-bordered">
+					<tr class="info">
+						<th>序号</th>
+						<!-- <th>楼层号</th> -->
+						<th>教室号</th>
+						<th>座位号</th>
+						<th>该座位号的课桌状态</th>
+						<th>操作</th>
+					</tr>
+					{volist name="tbdesks" id="tbdesk" key="key"}
+					<tr>
+						<td>{$key}</td>
+						<!-- <td>{$tbdesk->getData('ID')}</td> -->
+						<td>{$tbdesk->getData('ID')}</td>
+						<td>{$tbdesk->getData('RoomID')}</td>
+						<td>{$tbdesk->getData('State')}</td>
+						<td>
+						<a class="btn btn-sm btn-primary" href="{:url('save?deskid='.$tbdesk->getData('ID').'&RoomID='.$tbdesk->getData('RoomID').'&State='.$tbdesk->getData('State'))}">
+						<i class="glyphicon glyphicon-pencil"></i>选择该座位</a>
+						
+						&nbsp;&nbsp;&nbsp;<a class="btn btn-sm btn-primary" href="{:url('unchoose?deskid='.$tbdesk->getData('ID').'&userid='.$tbdesk->getData('UserID'))}">
+						<i class="glyphicon glyphicon-pencil"></i>取消选择</a></td> 
+					</tr>
+					{/volist}
+				</table>
+				{$tbdesks->render()}
+            </form>
+        </div>
+    </div> 
+	<div class="text-center">
+		<form action="{:url('chooseseat')}" method="post">
+			<button type="submit" class="btn btn-danger">快速选座</button>
+		</form>
+	</div>
+</body>
+</html> 

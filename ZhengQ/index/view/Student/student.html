@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<title>学生界面</title>
+	<link rel="stylesheet" style="text/css" href = "/seat/public/css/bootstrap.min.css"> 
+ </head>
+<body class="container">
+	<div class="row">
+         <div class="col-md-12">
+            <form action="{:url('update')}" method="post">
+                <div class="row">
+					<label>姓名:</label>
+					<input type="hidden" name="ID" value="{$Tbuser->getData('ID')}" />
+					<input type="text" name="Name" value="{$Tbuser->getData('Name')}"  readonly="true"/>
+					<label>当前身份:</label>
+					<input type="text" name="Role" value="{$Tbuser->getData('Role')}" readonly="true"/>
+					<label>行为分数:<label>
+					<input type="text" name="Score" value="{$Tbuser->getData('Score')}" readonly="true"/>
+					<label>违规次数:<label>
+					<input type="text" name="break"  value={$break} readonly="true">
+					<a class="btn btn-sm btn btn-info" href="{:url('student/choose')}">
+					<i class="glyphicon glyphicon-pencil"></i>学生选座</a>
+				</div>
+				<hr>
+				<div class="row text-center">
+					<label>个人预约历史</label>
+				</div>
+				<table class="table table-hover table-bordered">
+					<tr class="info">
+						<th>序号</th>
+						<th>预约教室号</th>
+						<th>座位号</th>
+						<th>预约开始时间</th>
+						<th>预约结束时间</th>
+						<th>是否正在预约</th>
+						<th>操作</th>
+					</tr>
+					{volist name="tborders" id="tborder" key = "key"}
+					<tr>
+						<td>{$key}</td>
+						<td>{$tborder['DeskID']}</td>
+						<td>{$tborder['DeskID']}</td>
+						<td>{$tborder['Time']}</td>
+						<td>{$tborder['Deadline']}</td>
+						<td>是</td>
+						<td>
+						<a class="btn btn-sm btn-primary" href="{:url('/desk/desk')}">
+						<i class="glyphicon glyphicon-pencil"></i>查看该座位</a></td>
+					</tr>
+					{/volist}
+					{volist name="tborderhistorys" id="tborderhistory" key = "key"}
+					<tr>
+						<td>{$key}</td>
+						<td>{$tborderhistory['DeskID']}</td>
+						<td>{$tborderhistory['DeskID']}</td>
+						<td>{$tborderhistory['Time']}</td>
+						<td>{$tborderhistory['Deadline']}</td>
+						<td>否</td>
+						<td>
+						<a class="btn btn-sm btn-primary" href="{:url('/desk/desk')}">
+						<i class="glyphicon glyphicon-pencil"></i>查看该座位</a></td>
+					</tr>
+					{/volist}
+				</table>
+            </form>
+        </div>
+    </div>
+</body>
+</html> 

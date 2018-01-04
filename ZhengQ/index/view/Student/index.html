@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<title>学生界面</title>
+	<link rel="stylesheet" style="text/css" href = "/seat/public/css/bootstrap.min.css"> 
+ </head>
+<body class="container" ng-controller="IndexController">
+	<div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="www.baidu.com">梦云智</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="{:url('Teacher/index')}">座位选择</a></li>
+                            <li><a href="{:url('Student/index')}">个人信息展示</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+							<li><a href="#">您当前为身份为：学生</a></li>
+                            <li><a href="#">注销</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</body>
+</html> 
