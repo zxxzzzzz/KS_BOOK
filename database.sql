@@ -32,7 +32,6 @@ CREATE TABLE `TBFloor`(
 `OrderTime` TIME NOT NULL COMMENT '预约开放时间',
 `OrderEndTime` TIME NOT NULL COMMENT '预约结束时间',
 `LeaveLength` INT(11) NOT NULL COMMENT '暂离时长min',
-`FloorNum` INT(11) NOT NULL COMMENT '所属楼层',
 PRIMARY KEY (`ID`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
