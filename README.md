@@ -5,3 +5,4 @@
 ### 2017/12/25 增加新表  **TBOrder**（已在datebase.sql修改） 增加字段Deadline于表tborder   tborderhistory
 ### 2017/12/25 python触发器完成
 ### 2017/12/28 界面4完成（cjx）
+### 2017/1/4 学生管理开发完成(MeetSola）
