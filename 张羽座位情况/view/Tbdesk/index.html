@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>座位情况显示</title>
+	<link rel="stylesheet" type="text/css" href="/seat/public/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+</head>
+<body class="container">
+    <hr>
+	<h4 class="text-center">图书馆座位情况显示</h4>
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+			 <hr/>
+			 <div class="row"> 
+				 <div class="col-md-8"> 
+					 <form class="form-inline"> 
+						 <label class="sr-only" for="roomid">教室号</label> 
+						 <input type="number" name="roomid" class="form-controller" placeholder="教室号..." value="{:input('get.roomid')}"> 
+						 <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button> 
+					 </form> 
+				 </div> 
+			 </div> 
+			 <hr/> 
+			<table class="table table-hover table-bordered">
+                <tr class="info">
+                    <th>序号</th>
+                    <th>教室号</th>
+                    <th>座位号</th>
+                    <th>操作</th>
+                </tr>
+                {volist name="tbdesks" id="tbdesk" key="key"}
+                <tr>
+                    <td>{$key}</td>
+                    <td>{$tbdesk->getData('RoomID')}</td>
+                    <td>{$tbdesk->getData('ID')}</td>
+                    <td>
+					<a class="btn btn-danger btn-sm" href="{:url('/desk/desk')}">
+					<i class="glyphicon glyphicon-align-justify"></i>&nbsp;座位状况</a>
+					&nbsp;
+					<a class="btn btn-sm btn-primary" href="{:url('/floor/floor')}">
+					<i class="glyphicon glyphicon-share-alt"></i>&nbsp;返回教室界面</a></td>
+                </tr>
+                {/volist}
+            </table>
+            {$tbdesks->render()}
+		</div>
+	</div>
+</body>
+</html>
