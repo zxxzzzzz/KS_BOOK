@@ -120,7 +120,7 @@ class StudentController extends IndexController{
             return $this->error('未找到ID为' . $id . '的记录');
         }
 		$deskID = Request::instance()->param('deskid/d'); //座位id
-		$UserID = Request::instance()->param('userid/d'); //楼层id
+		$UserID = Request::instance()->param('userid/d'); //用户id
 		if($UserID != $id){
 			$this->error("该座位不是你选择的座位，无法取消！",url('student/choose'));
 		}
