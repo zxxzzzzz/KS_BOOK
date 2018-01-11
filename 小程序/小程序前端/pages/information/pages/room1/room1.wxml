@@ -1,0 +1,64 @@
+<import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" />
+
+
+<view class="container">
+  <template is="head" />
+
+  <view class="page-body">
+    <view class="page-section">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell__hd">
+            <view class="weui-label">阅览室编号</view>
+          </view>
+          <view class="weui-label">
+            <input class="weui-input" type="text"  name="floorid" value="{{roomid}}" ></input>
+          </view>
+
+         <view class="weui-cell__hd">
+            <view class="weui-label">阅览室名称</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="text" name="roomid" value="{{Name}}" ></input>
+          </view>
+
+          <view class="weui-cell__hd">
+            <view class="weui-label">阅览室所属楼层</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="text" name="floorid" value="{{FloorID}}" ></input>
+          </view>
+
+         <view class="weui-cell__hd">
+            <view class="weui-label">开放时间表</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="text" name="floorid" value="{{OpenDay}}" ></input>
+          </view>
+
+         <view class="weui-cell__hd">
+            <view class="weui-label">提前预约天数</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="text"  name="floorid" value="{{OrderDay}}" ></input>
+          </view>
+
+          <view class="weui-cell__hd">
+            <view class="weui-label">暂离时长（分钟）</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="text"  name="floorid" value="{{OrderEndTime}}" ></input>
+          </view>
+
+          <view class="btn-area">
+          <button type="primary" bindtap="goBack">返回</button> 
+        </view>
+      </view>
+      
+    </view>
+  </view>
+  
+
+
+  <template is="foot" />
+</view>

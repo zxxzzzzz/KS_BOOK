@@ -1,0 +1,42 @@
+<import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" />
+
+
+<view class="container">
+  <template is="head" />
+
+  <view class="page-body">
+    <view class="page-section">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell__hd">
+            <view class="weui-label">课桌编号</view>
+          </view>
+          <view class="weui-label">
+            <input class="weui-input" type="text"  name="deskid" value="{{deskid}}" ></input>
+          </view>
+
+         <view class="weui-cell__hd">
+            <view class="weui-label">所属教室</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="text" name="roomid" value="{{roomid}}" ></input>
+          </view>
+
+         <view class="weui-cell__hd">
+            <view class="weui-label">课桌状态</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="text" name="state" value="{{state}}" ></input>
+          </view>
+          <view class="btn-area">
+          <button type="primary" bindtap="goBack">返回</button> 
+          </view>
+      </view>
+      
+    </view>
+  </view>
+  
+
+
+  <template is="foot" />
+</view>

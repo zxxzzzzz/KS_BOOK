@@ -1,0 +1,38 @@
+<import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" />
+
+  <view class="container">
+  <view class="container">学生暂离</view>
+
+  <view class="page-body">
+    <view class="page-section">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">暂离开始时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" value='{{key}}'
+            start="00:00" end="24:00" bindchange='keyChange' >{{key}}</picker>
+            <!-- <input class="weui-input" type="text" placeholder="请输入暂离开始时间" name="key" value="{{key}}" bindinput="keyChange"></input> -->
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">暂离结束时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" value='{{data}}' start="00:00" end="24:00">{{data}}</picker>
+          </view>
+        </view>
+      </view>
+      <view class="btn-area">
+        <button type="primary" bindtap="getOut">暂离座位</button>
+      </view>
+    </view>
+  </view>
+
+  <modal title="{{dialog.title}}" hidden="{{dialog.hidden}}" no-cancel bindconfirm="confirm">{{dialog.content}}</modal>
+
+  <template is="foot" />
+</view>

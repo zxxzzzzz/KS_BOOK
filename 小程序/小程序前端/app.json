@@ -1,0 +1,40 @@
+{
+  "pages":[
+    "pages/student/index",
+    "pages/student/pages/getin/getin",
+    "pages/student/pages/getout/getout",
+    "pages/student/pages/over/over",
+
+    "pages/information/index",
+    "pages/information/pages/floor/floor",
+    "pages/information/pages/floor1/floor1",
+    "pages/information/pages/desk/desk",
+    "pages/information/pages/desk1/desk1",
+    "pages/information/pages/room/room",
+    "pages/information/pages/room1/room1",
+    "pages/information/pages/rule/rule",
+    "pages/information/pages/rule1/rule1"
+  ],
+  "tabBar":{
+    "list":[{
+      "pagePath":"pages/student/index",
+      "text":"学生操作"
+    },{
+      "pagePath":"pages/information/index",
+      "text":"信息查询"
+    }]
+  },
+  "window":{
+    "backgroundTextStyle":"white",
+    "navigationBarBackgroundColor": "#BBDEF8",
+    "navigationBarTitleText": "图书馆座位预约管理系统",
+    "navigationBarTextStyle":"white"
+  },
+  "networkTimeout":{
+    "request":10000,
+    "connectSocket":10000,
+    "uploadFile":10000,
+    "downloadFile":10000
+  },
+  "debug":false
+}
