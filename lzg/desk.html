@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>登录界面</title>
+		<link rel="icon" href="/fav.ico" type="image/png" >
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		 
+		
+		 
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+		 
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="/tp5/public/static/js/ajax.js"></script>
+		
+    </head>
+    <body>
+		
+        <div class="container">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<nav class="navbar navbar-default" role="navigation">
+					<div class="navbar-header">
+						 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>
+					</div>
+				
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class="active">
+								 <a href="#">Link</a>
+							</li>
+							<li>
+								 <a href="#">Link</a>
+							</li>
+							<li class="dropdown">
+								 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+								<ul class="dropdown-menu">
+									<li>
+										 <a href="#">Action</a>
+									</li>
+									<li>
+										 <a href="#">Another action</a>
+									</li>
+									<li>
+										 <a href="#">Something else here</a>
+									</li>
+									<li class="divider">
+									</li>
+									<li>
+										 <a href="#">Separated link</a>
+									</li>
+									<li class="divider">
+									</li>
+									<li>
+										 <a href="#">One more separated link</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<form class="navbar-form navbar-left" role="search">
+							<div class="form-group">
+								<input type="text" class="form-control" />
+							</div> <button type="submit" class="btn btn-default">Submit</button>
+						</form>
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								 <a href="#">Link</a>
+							</li>
+							<li class="dropdown">
+								 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+								<ul class="dropdown-menu">
+									<li>
+										 <a href="#">Action</a>
+									</li>
+									<li>
+										 <a href="#">Another action</a>
+									</li>
+									<li>
+										 <a href="#">Something else here</a>
+									</li>
+									<li class="divider">
+									</li>
+									<li>
+										 <a href="#">Separated link</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				
+				</nav>
+			</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-6 column">
+					<div class="container">
+						<div class="row clearfix">
+							<div class="col-md-12 column">
+								<dl>
+									<dt>
+										图书馆文明守则
+									</dt>
+									<br>
+									<dd>
+										不能在图书馆吃香蕉
+									</dd>
+									<br>
+									<dt>
+										不能在图书馆吃饺子
+									</dt>
+									<br>
+									<dd>
+										不能在图书馆晒衣服
+									</dd>
+									<br>
+									<dd>
+										在图书馆要安静看书
+									</dd>
+									<br>
+									<dt>
+										图书馆实行积分制，积分低于0的会被加入黑名单
+									</dt>
+									<br>
+									<dd>
+										每天积分会加一，但100分为最大值
+									</dd>
+									<br>
+									<dt id="where">
+										
+									</dt>
+									<dt id="desk">
+										
+									</dt>
+									<br>
+									<dd id="desk2">
+										
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 column">
+					<img alt="140x140" src="/tp5/public/static/1.jpg" class="img-thumbnail" style="height:400px"/> 
+					<button type="button" class="btn btn-default">使用</button>
+					<button type="button" class="btn btn-default">签退</button> 
+					<button type="button" class="btn btn-default">暂离</button> 
+					<button type="button" class="btn btn-default">预约</button>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+				</div>
+			</div>
+		</div>
+     
+    </body>
+    <script>
+	function update(){
+		$.get('/tp5/public/index/desk/getdesk',{'data':{'deskid':getUrlParamsMap('deskid'),'userid':getUrlParamsMap('userid')}},function(data){
+			desk = data
+			var state = ''
+			if(desk.State == 'empty'){
+				state = '无人使用'
+			}
+			if(desk.State == 'ordering'){
+				state = '已被预约'
+			}
+			if(desk.State == 'leaving'){
+				state = '使用者暂离'
+			}
+			if(desk.State == 'using'){
+				state = '正在使用'
+			}
+			$('#desk').html('所在教室:'+desk.RoomName + ' 桌子状态:'+state)
+			$('#desk2').html('结束时间:'+desk.Deadline)
+		})
+	}
+	
+        $(function(){
+			setInterval(function(){update()},1000)
+			
+			$('.btn').click(function(){
+				if($(this).html() == '使用'){
+					$.get('/tp5/public/index/desk/qiandao',{'data':{'deskid':getUrlParamsMap('deskid'),'userid':getUrlParamsMap('userid')}},function(data){
+						update()
+						console.log(data)
+						
+						alert(data.message)
+						
+						
+					})
+				}
+				if($(this).html() == '签退'){
+					$.get('/tp5/public/index/desk/qiantui',{'data':{'deskid':getUrlParamsMap('deskid'),'userid':getUrlParamsMap('userid')}},function(data){
+						console.log(data)
+						update()
+						
+						alert(data.message)
+						
+					})
+				}
+				if($(this).html() == '暂离'){
+					$.get('/tp5/public/index/desk/zanli',{'data':{'deskid':getUrlParamsMap('deskid'),'userid':getUrlParamsMap('userid'),'time':getNow(),'deadline':getNow(60)}},function(data){
+						console.log(data)
+						update()
+						alert(data.message+' 期限:'+data.deadline)
+					})
+				}
+				if($(this).html() == '预约'){
+					$.get('/tp5/public/index/desk/yuyue',{'data':{'deskid':getUrlParamsMap('deskid'),'userid':getUrlParamsMap('userid'),'time':getNow(),'deadline':getNow(180)}},function(data){
+						
+						update()
+						
+						alert(data.message+' 期限:'+data.deadline)
+						
+					})
+				}
+				
+			})
+		})
+    </script>
+</html>
