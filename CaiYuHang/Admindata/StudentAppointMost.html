@@ -1,0 +1,38 @@
+<!-- <!DOCTYPE html> -->
+<!-- <html> -->
+<!-- <head> -->
+	<!-- <meta charset="UTF-8"> -->
+	<!-- <title>预约数据分析</title> -->
+<!-- </head> -->
+{extend name="index"/} 
+{block name="centeroo"}
+<body class="container">
+    <hr>
+	<h4 class="text-center">预约次数最多的学生</h4>
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-hover table-bordered">
+                <tr class="info">
+                    <th>序号</th>
+                    <th>学号</th>
+                    <th>姓名</th>
+    				<th>预约次数</th>            
+                {volist name="tbitems" id="item" key="key"}
+                <tr>
+                    <td>{$key}</td>
+                    <td>{$item['UserID']}</td>
+                    <td>{$item['Name']}</td>
+                    <td>{$item['count(tborderhistory.UserID)']}</td>
+                {/volist}
+            </table>
+		</div>
+	</div>
+	<hr>
+		<a href="http://localhost/index/admindata/mostreserverdroom">最热门教室</a>
+	<a href="http://localhost/index/admindata/mostpopularseat">最热门座位</a>
+	<a href="http://localhost/index/admindata/mostbeachedseat">被违约最多的座位</a>
+	<a href="http://localhost/index/admindata/studentdefaultmost">违约最多的学生</a>
+</body>
+ {/block}
+<!-- </html> -->
